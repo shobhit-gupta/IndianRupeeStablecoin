@@ -1,3 +1,23 @@
+# DeFi: Indian Rupee Stablecoin (INRC)
+
+## Characteristics
+1. Relative Stability: Pegged or Floating?
+    - Pegged to ₹ (INR) => 1.00 INRC = ₹ 1.00
+2. Stability Method: Governed or Algorithmic?
+    - Algorithmic (Decentralized)
+3. Collateral Type: Endogenous or Exogenous?
+    - Exogenous (Crypto)
+        - wETH
+        - wBTC
+
+### Process
+- Chainlink Price Feeds are used to get us ETH & BTC equivalent of ₹.
+- Users with enough collateral can mint stablecoin.
+- Users are incentivized to liquidate under-collateralized users.
+
+
+
+
 ## Foundry
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
