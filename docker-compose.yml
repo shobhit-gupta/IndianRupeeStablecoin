@@ -1,0 +1,10 @@
+services:
+  inrc:
+    build: ./
+    stdin_open: true
+    tty: true
+    container_name: inrc-app
+    ports:
+      - "15545:8545"
+    volumes:
+      - ./:/app
