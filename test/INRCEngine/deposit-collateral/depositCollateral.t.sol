@@ -2,8 +2,8 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 import {INRCEngine_Test} from "../INRCEngine.t.sol";
-import {INRCEngine} from "../../../../src/INRCEngine.sol";
-import {MockERC20} from "../../../mocks/MockERC20.sol";
+import {INRCEngine} from "../../../src/INRCEngine.sol";
+import {MockERC20} from "../../mocks/MockERC20.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 import {console} from "forge-std/Test.sol";
 

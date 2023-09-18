@@ -2,8 +2,8 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 import {Test} from "forge-std/Test.sol";
-import {INRCDeployer} from "../../script/INRC.s.sol";
-import {INRC} from "../../src/INRC.sol";
+import {INRCDeployer} from "../script/INRC.s.sol";
+import {INRC} from "../src/INRC.sol";
 
 contract INRCTest is Test {
     INRC internal s_inrc;

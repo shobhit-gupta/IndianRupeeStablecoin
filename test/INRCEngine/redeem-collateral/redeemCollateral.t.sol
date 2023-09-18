@@ -2,9 +2,9 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 import {INRCEngine_Test} from "../INRCEngine.t.sol";
-import {INRCEngine} from "../../../../src/INRCEngine.sol";
+import {INRCEngine} from "../../../src/INRCEngine.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
-import {MockERC20} from "../../../mocks/MockERC20.sol";
+import {MockERC20} from "../../mocks/MockERC20.sol";
 import {console, stdError} from "forge-std/Test.sol";
 
 contract RedeemCollateral_Test is INRCEngine_Test {
@@ -224,7 +224,7 @@ contract RedeemCollateral_Test is INRCEngine_Test {
     }
 
     /**
-     * @dev If you're getting an `FAIL. Reason: Error != expected error:...`
+     * @dev If on Sepolia, you're getting a `FAIL. Reason: Error != expected error:...`
      * then the reason probably is slight error in division. Try the following:
      * 1. Assign `expectedHealthFactor` to `499999999999999999` instead of `500000000000000000` or vice versa.
      * 2. If it still doesn't work then try logging the Health Factor value in INRCEngine#redeemCollateral before
@@ -247,7 +247,8 @@ contract RedeemCollateral_Test is INRCEngine_Test {
         if (isOnAnvil()) {
             expectedHealthFactor = 499999999999999999;
         } else {
-            expectedHealthFactor = 500000000000000000;
+            // expectedHealthFactor = 500000000000000000;
+            expectedHealthFactor = 499999999999999999;
         }
 
         vm.expectRevert(

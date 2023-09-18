@@ -2,7 +2,7 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 import {console, Test} from "forge-std/Test.sol";
-import {BaseScript} from "../../../script/BaseScript.s.sol";
+import {BaseScript} from "../../script/BaseScript.s.sol";
 
 /**
  *

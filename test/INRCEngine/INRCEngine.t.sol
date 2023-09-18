@@ -2,11 +2,11 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 import {BaseTest} from "../BaseTest.t.sol";
-import {INRC} from "../../../src/INRC.sol";
-import {INRCEngine} from "../../../src/INRCEngine.sol";
-import {INRCEngineDeployer} from "../../../script/INRCEngine.s.sol";
-import {Config} from "../../../script/BaseScript.s.sol";
-import {MockERC20} from "../../mocks/MockERC20.sol";
+import {INRC} from "../../src/INRC.sol";
+import {INRCEngine} from "../../src/INRCEngine.sol";
+import {INRCEngineDeployer} from "../../script/INRCEngine.s.sol";
+import {Config} from "../../script/BaseScript.s.sol";
+import {MockERC20} from "../mocks/MockERC20.sol";
 
 abstract contract INRCEngine_Test is BaseTest {
     uint256 public constant ERC20_STARTING_BALANCE = 0.1 ether;

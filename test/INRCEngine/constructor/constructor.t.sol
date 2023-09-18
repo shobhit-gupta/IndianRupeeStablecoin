@@ -2,8 +2,8 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 import {INRCEngine_Test} from "../INRCEngine.t.sol";
-import {INRC} from "../../../../src/INRC.sol";
-import {INRCEngine} from "../../../../src/INRCEngine.sol";
+import {INRC} from "../../../src/INRC.sol";
+import {INRCEngine} from "../../../src/INRCEngine.sol";
 // import {console} from "forge-std/Test.sol";
 
 contract Constructor_Test is INRCEngine_Test {
