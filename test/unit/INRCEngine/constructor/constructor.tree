@@ -1,0 +1,13 @@
+constructor.t.sol
+|
+├── when listOfCollateralTknCxAddr and listOfUSDPriceFeedAddr are of different lengths
+|  └── it should revert with INRCEngine__CollateralsAndPriceFeeds_LengthsMismatch();
+|
+└── when listOfCollateralTknCxAddr and listOfUSDPriceFeedAddr are of same lengths
+   |
+   ├── when listOfCollateralTknCxAddr and listOfUSDPriceFeedAddr are empty
+   |  └── it should revert with INRCEngine__CollateralsAndPriceFeeds_EmptyLists()
+   |
+   |  // This is the normal case which is being tested repeatedly in other test functions.
+   └── when listOfCollateralTknCxAddr or listOfUSDPriceFeedAddr are non-empty
+      └── it should create INRCEngine instance

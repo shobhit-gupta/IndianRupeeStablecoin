@@ -1,0 +1,44 @@
+mintINRC.t.sol
+├── when amount is 0
+|  └── it should revert with INRCEngine__Amount_IsZero()
+|
+└── when amount > 0
+   |
+   ├── given user has not deposited any collateral
+   |  └── it should revert with INRCEngine__HealthFactor_Breaks(0)
+   |
+   └── given user has deposited some collateral
+      |
+      ├── given user's total minted value after minting will be worth not more than half of their collateral value
+      |  |
+      |  |  // [TODO] This is an unlikely case and requires mock INRC contract
+      |  ├── when INRC minting fails
+      |  |  └── it should revert with INRCEngine__Mint_Failed()
+      |  |
+      |  └── when INRC minting succeeds
+      |     └── it should increase inrcMinted for the user by amount
+      |
+      └── given user's total minted value after minting will be worth more than half of their collateral value
+         └── it should revert with INRCEngine__HealthFactor_Breaks(v) where v < MIN_HEALTH_FACTOR
+
+
+
+
+
+_revertIfHealthFactorIsBad.t.sol
+├── given user has not deposited any collateral
+|  └── it should revert with INRCEngine__HealthFactor_Breaks(0)
+|
+└── given user has deposited some collateral
+   |
+   |  // [TODO] To test: Inherit INRCEngine -> Create public wrappers for internal INRCEngine functions
+   ├── given user has 0 inrcMinted
+   |  └── it should return type(uint256).max
+   |
+   ├── given user has some inrcMinted which is worth more than half of their collateral value
+   |  └── it should revert with INRCEngine__HealthFactor_Breaks(v) where v < 1
+   |
+   └── given user has some inrcMinted which is worth less than half of their collateral value
+      └── it should return without any revert
+
+

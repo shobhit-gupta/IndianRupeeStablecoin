@@ -1,0 +1,27 @@
+burnINRC.t.sol
+|
+├── when amount is 0
+|  └── it should revert with INRCEngine__Amount_IsZero()
+|
+└── when amount is greater than 0
+   |
+   ├── given user has no inrcMinted
+   |  └── it should revert with Arithmetic underflow error
+   |
+   ├── given user has inrcMinted that is less than amount
+   |  └── it should revert with Arithmetic underflow error
+   |
+   └── given user has inrcMinted that is greater than or equal to amount
+      |
+      ├── given user has less than amount INRC tokens
+      |  └── it should revert
+      |
+      └── given user has greater than equal to amount INRC tokens
+         |
+         ├── when ERC20 transfer fails
+         |  └── it should revert with INRCEngine__Transfer_Failed()
+         |
+         └── when ERC20 transfer succeeds
+            └── it should reduce the user's inrcMinted by amount
+            └── it should reduce the user's ERC20 balance by amount
+            └── it should reduce the totalSupply of INRC by amount

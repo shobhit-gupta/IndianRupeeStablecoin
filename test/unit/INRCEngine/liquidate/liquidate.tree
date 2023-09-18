@@ -1,0 +1,78 @@
+liquidate.t.sol
+|
+├── when debtToCover is 0
+|  └── it should revert with INRCEngine__Amount_IsZero()
+|
+└── when debtToCover is greater than 0
+   |
+   ├── when collateralTknCxAddr is not allowed
+   |  └── it should revert with INRCEngine__Collateral_Invalid()
+   |
+   └── when collateralTknCxAddr is allowed
+      |
+      ├── when defaulter has a health factor greater than or equal to MIN_HEALTH_FACTOR
+      |  └── it should revert with INRCEngine__HealthFactor_IsOkay(v) where v >= MIN_HEALTH_FACTOR
+      |
+      └── when defaulter has a health factor lesser than MIN_HEALTH_FACTOR
+         |
+         ├── given defaulter has never deposited collateral of type collateralTknCxAddr
+         |  └── it should revert with Arithmetic underflow error
+         |
+         └── given defaulter has deposited collateral
+            |
+            ├── when amountToRedeem is greater than the defaulter's collateralTknCxAddr collateral
+            |  └── it should revert with Arithmetic underflow error
+            |
+            └── when amountToRedeem is less than or equal to defaulter's collateralTknCxAddr collateral
+               |
+               ├── when ERC20 transfer fails
+               |  └── it should revert with INRCEngine__Transfer_Failed()
+               |
+               └── when ERC20 transfer succeeds
+                  |
+                  | // Time 0:
+                  | // =======
+                  | // defaulter's collateral: 10weth = 1_500_000 INR
+                  | // defaulter's inrcMinted: 500_000 INRC
+                  |
+                  | // Time 1:
+                  | // =======
+                  | // defaulter's collateral: 10weth = 750_000 INR
+                  | // defaulter's inrcMinted: 500_000 INRC
+                  |
+                  | // debtToCover: 600_000
+                  | // debtToCoverInTkns = 600_000 / 75_000 = 8weth
+                  | // amountToRedeem = 8.8weth
+                  |
+                  | // s_inrcMintedBy[defaulter] -= debtToCover
+                  | // => s_inrcMintedBy[defaulter] = 500_000 - 600_000
+                  ├── given defaulter has inrcMinted less than debtToCover
+                  |  └── it should revert with Arithmetic underflow error
+                  |
+                  └── given defaulter has inrcMinted greater than or equal to debtToCover
+                     |
+                     ├── given liquidator has less than debtToCover INRC tokens
+                     |  └── it should revert
+                     |
+                     └── given liquidator has greater than equal to debtToCover INRC tokens
+                        |
+                        ├── when ERC20 transfer fails
+                        |  └── it should revert with INRCEngine__Transfer_Failed()
+                        |
+                        └── when ERC20 transfer succeeds
+                           |
+                           ├── when defaulter's healthFactor doesn't get better post liquidation
+                           |  └── it should revert with INRCEngine__HealthFactor_NotImproved()
+                           |
+                           └── when defaulter's healthFactor gets better
+                              └── it should reduce defaulter's collateral of type collateralTknCxAddr by amountToRedeem
+                              └── it should emit RedeemedCollateral(defaulter, liquidator, collateralTknCxAddr, amountToRedeem)
+                              └── it should increase collateralTknCxAddr (ERC20) balance of liquidator by amountToRedeem
+                              └── it should reduce defaulter's inrcMinted by debtToCover
+                              └── it should reduce INRC (ERC20) balance of liquidator by debtToCover
+                              └── it should reduce the totalSupply of INRC by debtToCover?
+
+
+
+
+

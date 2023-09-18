@@ -1,0 +1,22 @@
+depositCollateral.t.sol
+├── when amount is 0
+|  └── it should revert with INRCEngine__Amount_IsZero()
+└── when amount is greater than 0
+   ├── when collateralTknCxAddr is not allowed
+   |  └── it should revert with INRCEngine__Collateral_Invalid()
+   └── when collateralTknCxAddr is allowed
+      ├── when ERC20 transfer fails with revert
+      |  └── it should revert
+      ├── when ERC20 transfer fails with & returns False
+      |  └── it should revert with INRCEngine__Transfer_Failed()
+      └── when ERC20 transfer succeeds
+         └── it should increase msg.sender's collateral by amount
+         └── it should emit DepositedCollateral event
+         └── it should increase the token balance of address(s_inrcEngine) by amount
+
+
+
+
+
+
+
