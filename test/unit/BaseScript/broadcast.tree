@@ -1,0 +1,21 @@
+broadcast.t.sol
+├── when non-zero broadcasting address is provided
+│  ├── when the corresponding private key is not provided
+|  |  └── it should revert & not broadcast
+|  └── when the corresponding private key is provided
+|     ├── when the private key is not for the broadcasting address
+|     |  └── it should revert & not broadcast
+|     └── when the private key is for the broadcasting address
+|        ├── it should set `broadcaster` to provided address
+|        └── it should broadcast
+└── when non-zero broadcasting address is not provided
+   ├── when a non-zero private key is provided
+   |  ├── it should set `broadcaster` to a new address
+   |  └── it should broadcast
+   └── when a non-zero private key is not provided
+      ├── when a mnemonic is provided
+      |  ├── it should set `broadcaster` to a new address
+      |  └── it should broadcast
+      └── when a mnemonic is not provided
+         ├── it should set `broadcaster` to a ANVIL Wallet's first address
+         └── it should broadcast

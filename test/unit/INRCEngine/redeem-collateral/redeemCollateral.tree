@@ -1,0 +1,38 @@
+redeemCollateral.t.sol
+|
+├── when amount is 0
+|  └── it should revert with INRCEngine__Amount_IsZero()
+|
+└── when amount is greater than 0
+   |
+   ├── when collateralTknCxAddr is not allowed
+   |  └── it should revert with INRCEngine__Collateral_Invalid()
+   |
+   └── when collateralTknCxAddr is allowed
+      |
+      ├── given user has never deposited collateral
+      |  └── it should revert with Arithmetic underflow error
+      |
+      ├── given user has never deposited collateral of type collateralTknCxAddr
+      |  └── it should revert with Arithmetic underflow error
+      |
+      └── given user has deposited collateral
+         |
+         ├── when amount is greater than the collateral
+         |  └── it should revert with Arithmetic underflow error
+         |
+         └── when amount is less than equal to the collateral
+            |
+            ├── when ERC20 transfer fails
+            |  └── it should revert with INRCEngine__Transfer_Failed()
+            |
+            └── when ERC20 transfer succeeds
+               |
+               ├── given user's total minted value after redeeming will be worth less than half of their remaining collateral value
+               |  └── it should reduce the user's collateral by amount
+               |  └── it should increase user's ERC20 balance by amount
+               |  └── it should emit RedeemedCollateral(msg.sender, msg.sender, collateralTknCxAddr, amount)
+               |
+               └── given user's total minted value after redeeming will be worth more than half of their remaining collateral value
+                  └── it should revert with INRCEngine__HealthFactor_Breaks(v) where v < MIN_HEALTH_FACTOR
+

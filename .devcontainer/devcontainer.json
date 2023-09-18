@@ -49,6 +49,7 @@
           "editor.defaultFormatter": "JuanBlanco.solidity"
         },
         "solidity.formatter": "forge",
+        "solidity.monoRepoSupport": false,
         "solidity.packageDefaultDependenciesContractsDirectory": "src",
         "solidity.packageDefaultDependenciesDirectory": "lib",
         "solidity.compileUsingRemoteVersion": "v0.8.19",

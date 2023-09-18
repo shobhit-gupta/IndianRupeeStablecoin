@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.19 <0.9.0;
 
-import {BaseScript} from "./Base.s.sol";
+import {BaseScript} from "./BaseScript.s.sol";
 import {INRC} from "../src/INRC.sol";
 
 contract INRCDeployer is BaseScript {

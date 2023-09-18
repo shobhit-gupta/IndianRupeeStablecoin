@@ -1,0 +1,12 @@
+getTknCxEquivalentOfINRC.t.sol
+|
+├── when tknCxAddr is not allowed
+|  └── it should revert with INRCEngine__Collateral_Invalid()
+|
+└── when tknCxAddr is allowed
+    |
+    ├── given tknCxAddr is worth 0 USD
+    |  └── it should revert with INRCEngine__PriceFeed_ReturnsZero()
+    |
+    └── given tknCxAddr is worth more than 0 USD
+       └── it should return the expected value

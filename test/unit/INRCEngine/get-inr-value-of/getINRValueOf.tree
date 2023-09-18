@@ -1,0 +1,34 @@
+getINRValueOf.t.sol
+|
+├── when tknCxAddr is not allowed
+|  └── it should revert with INRCEngine__Collateral_Invalid()
+|
+└── when tknCxAddr is allowed
+   |
+   ├── when tknCxAddr is weth
+   |  |
+   |  ├── given network is a testnet
+   |  |  └── it should return the JPY value
+   |  |
+   |  └── given network is not testnet
+   |     └── it should return the INR value
+   |
+   └── when tknCxAddr is wbtc
+      |
+      ├── given network is a testnet
+      |  └── it should return the JPY value
+      |
+      └── given network is not testnet
+         └── it should return the INR value
+
+
+// ├── given network is a testnet
+// |  ├── when tknCxAddr is weth
+// |  |  └── it should return the JPY value
+// |  └── when tknCxAddr is wbtc
+// |     └── it should return the JPY value
+// └── given network is not testnet
+//    ├── when tknCxAddr is weth
+//    |  └── it should return the INR value
+//    └── when tknCxAddr is wbtc
+//       └── it should return the INR value

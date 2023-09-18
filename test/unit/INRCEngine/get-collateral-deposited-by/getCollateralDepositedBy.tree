@@ -1,0 +1,7 @@
+getCollateralDepositedBy.t.sol
+├── given depositer has never deposited any collateral
+|  └── it should return 0
+├── given depositer has never deposited tokens of type collateralTknCxAddr
+|  └── it should return 0
+└── given depositer has deposited collateral of type collateralTknCxAddr
+   └── it should return the expected value

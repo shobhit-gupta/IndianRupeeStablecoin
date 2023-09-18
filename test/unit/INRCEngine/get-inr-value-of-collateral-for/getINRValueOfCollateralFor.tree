@@ -1,0 +1,10 @@
+getINRValueOfCollateralFor.t.sol
+├── given there are no allowed collateral token contracts [Constructor now ensures this is not possible]
+|  └── it should return 0
+└── given there are allowed collateral token contracts
+   ├── given user has never deposited any collateral
+   |  └── it should return 0
+   ├── given user has deposited some types of collateral
+   |  └── it should return the expected value
+   └── given user has deposited all types of collateral
+      └── it should return the expected value
