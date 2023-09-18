@@ -1,6 +1,9 @@
 # DeFi: Indian Rupee Stablecoin (INRC)
 
-A Foundry project using Chainlink Feeds & Formal Verification with Branching Tree Technique.
+A DeFi Stablecoin project using
+1. Foundry
+2. Chainlink Feeds
+3. **Formal Verification with Branching Tree Technique**: See [Testing Overview](#testing-overview) for more details on Testing.
 
 - [DeFi: Indian Rupee Stablecoin](#defi-indian-rupee-stablecoin-inrc)
 - [Tasklist](#tasklist)
