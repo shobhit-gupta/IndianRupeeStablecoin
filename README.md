@@ -3,7 +3,9 @@
 A DeFi Stablecoin project using
 1. Foundry
 2. Chainlink Feeds
-3. **Formal Verification with Branching Tree Technique**: See [Testing Overview](#testing-overview) for more details on Testing.
+3. Formal Verification with **Branching Tree Technique (BTT)**: See [Testing Overview](#testing-overview) for more details on Testing.
+
+<hr/>
 
 - [DeFi: Indian Rupee Stablecoin](#defi-indian-rupee-stablecoin-inrc)
 - [Tasklist](#tasklist)
@@ -43,7 +45,7 @@ A DeFi Stablecoin project using
     - [x] ~~INRC~~ *(Not really needed)*
     - [x] INRCEngine
     - [ ] Interactions (if needed)
-- [x] Testing: **Formal Verification with BTT**
+- [x] Testing: Formal Verification with BTT
     - [x] ~~BaseScript~~
         - [x] ~~Broadcast~~ *(Requires rewriting to accomodate function params instead of environment variables update)*
     - [x] **INRCEngine**
